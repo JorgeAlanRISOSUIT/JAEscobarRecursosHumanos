@@ -1,0 +1,94 @@
+﻿@model ML.Empleado
+@{
+    ViewBag.Title = "Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Empleados</h2>
+<div class="p-2">
+    <a class="btn btn-success" href="@Url.Action("ObtenerEmpleado", "Empleado")">Agregar Empleado</a>
+</div>
+@if (!ViewBag.Mensaje)
+{
+    <div class="table-responsive">
+        <table class="table table-condensed table-striped">
+            <thead>
+                <tr class="text-center text-capitalize negritas">
+                    <td>NumeroEmpleado</td>
+                    <td>Nombre</td>
+                    <td>ApellidoPaterno</td>
+                    <td>ApellidoMaterno</td>
+                    <td>FechaNacimiento</td>
+                    <td>Email</td>
+                    <td>Genero</td>
+                    <td>Telefono</td>
+                    <td>Celular</td>
+                    <td>Sueldo</td>
+                    <td>Departamento</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var result in Model.Empleados)
+                {
+                    <tr class="text-center">
+                        <td>@result.NumeroEmpleado</td>
+                        <td>@result.Nombre</td>
+                        <td>@result.ApellidoPaterno</td>
+                        <td>@result.ApellidoMaterno</td>
+                        <td>@result.FechaNacimiento
+                        <td>@result.Email</td>
+                        <td>@result.Genero</td>
+                        <td>@result.Telefono</td>
+                        <td>@result.Celular</td>
+                        <td class="negritas">$@result.Sueldo MXN</td>
+                        <td>@result.Departamento.Nombre</td>
+                        <td>
+                            <div class="caja-componente-horizontal row">
+                                <div class="col-sm-6">
+                                    <button id="Eliminar" data-idEmpleado="@result.IdEmpleado" class="btn btn-danger glyphicon glyphicon-trash"></button>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-info glyphicon glyphicon-user"></button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $(document).ready(() => {
+            $('button#Eliminar').click(function (event) {
+                let value = $(event.target).data('idempleado')
+                $.ajax({
+                    url: '@Url.Action("EliminarEmpleado")',
+                    method: 'POST',
+                    dataType: 'JSON',
+                    data: { idEmpleado: value },
+                    success: function (result) {
+                        debugger
+                        if (result.item1 === true) {
+                            alert('Se ha eliminado el usuario')
+                            window.location.reload();
+                        } else {
+                            alert('no existe el usuario')
+                        }
+                    },
+                    error: function (result) {
+                        alert(`${result.Item2} ${result.Item3}`)
+                    }
+                })
+            })
+        })
+    </script>
+}
+else
+{
+    <div class="row">
+
+    </div>
+}

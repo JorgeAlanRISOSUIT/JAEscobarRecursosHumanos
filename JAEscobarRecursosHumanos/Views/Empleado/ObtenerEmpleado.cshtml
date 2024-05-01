@@ -1,0 +1,123 @@
+﻿@model ML.Empleado
+@{
+    ViewBag.Title = "ObtenerEmpleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ObtenerEmpleado</h2>
+<div class="caja-componente-horizontal centrar-elemento crecer-item">
+    @using (Html.BeginForm("ObtenerEmpleado", "Empleado", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "caja-componente-vertical active p-2 col-sm-9" }))
+    {
+        if (Model.IdEmpleado != 0)
+        {
+            @Html.HiddenFor(model => model.IdEmpleado)
+        }
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-sm-2" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ApellidoPaterno, new { @class = "col-sm-2" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ApellidoMaterno, new { @class = "col-sm-2" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new { @class = "col-sm-2" })
+                <div class="col-sm-8">
+                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @type = "email" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.FechaNacimiento, new { @class = "col-md-2" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control", @type = "date" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Genero, new { @class = "col-sm-2" })
+                <div class="btn-group-lg">
+                    <div class="col-sm-8">
+                        <label for="Genero">
+                            @Html.RadioButtonFor(model => model.Genero, "M")
+                            Masculino
+                        </label>
+                        <label>
+                            @Html.RadioButtonFor(model => model.Genero, "F")
+                            Femenino
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumeroEmpleado, new { @class = "col-md-2" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.NumeroEmpleado, new { @class = "form-control", @type = "text" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telefono, new { @class = "col-md-2" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", @type = "text" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Celular, new { @class = "col-md-2" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.Celular, new { @class = "form-control", @type = "text" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sueldo, new { @class = "col-md-2" })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.Sueldo, new { @class = "form-control", @type = "number", @min = "0", @step = "100", value = "" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Departamento, new { @class = "col-sm-2" })
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(model => model.Departamento.IdDepartamento, new SelectList(Model.Departamento.Departamentos, "IdDepartamento", "Nombre", Model.IdEmpleado == 0 ? 0 : Model.Departamento.IdDepartamento), "Seleccione un departamento", new { @class = "form-control", @id = "ddlDepartamento" })
+                </div>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="caja-componente-horizontal separar-elemento ">
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-primary">Aceptar</button>
+                </div>
+                <div class="col-sm-6">
+                    <a href="@Url.Action("Empleados", "Empleados")" class="btn btn-danger">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

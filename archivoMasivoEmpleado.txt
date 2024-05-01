@@ -1,0 +1,8 @@
+NumeroEmpleado|Nombre|ApellidoPaterno|ApellidoMaterno|Email|Genero|FechaNacimiento|Telefono|Celular|Sueldo|IdDepartamento
+NN-NNN-NN|Herrera|Herrera|Flores|Herrera@gmail.com|M|2022-06-23|55555555||3000|1
+NN-NNN-NN|Valentin|Herrera|Manuel|Valentine@gmail.com|M|1999-06-23|55555555|555555555|2000|5
+NN-NNN-NN|Diego|Falcon|Flores|Diego@gmail.com|M|1997-06-23|55555555|555555555|3000|3
+NN-NNN-NN|Manuel|Diego|Perez|Manuel@gmail.com|M|1995-06-23|55555555||3000|1
+NN-NNN-NN|Ximena|Herrera|Sandoval|Ximena@gmail.com|F|1999-03-10|55555555|5555555555|3000|3
+NN-NNN-NN|Clara|Flores|Magon|Clara@gmail.com|F|1999-10-10|55555555|55555555|3000|2
+NN-NNN-NN|Nemuria|Flores|Flores|Nemuria@gmail.com|M|1994-01-20|55555555|55555555|3000|2
